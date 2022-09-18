@@ -1,3 +1,5 @@
+import { cleanNumbers } from "./util/numbers.js";
+
 export function add(numbers) {
   let sum = 0;
 
@@ -7,4 +9,17 @@ export function add(numbers) {
     sum += +number;
   }
   return sum;
+}
+
+export function calculateResult(numberValues) {
+  // 2.
+  let result = "";
+  try {
+    const numbers = cleanNumbers(numberValues); // 3.
+
+    result = add(numbers).toString();
+  } catch (error) {
+    result = error.message;
+  }
+  return result;
 }

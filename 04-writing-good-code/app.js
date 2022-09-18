@@ -1,43 +1,22 @@
-import { extractNumbers } from './src/parser.js';
+import { extractEnteredNumberValues } from "./src/parser.js";
 import {
   validateStringNotEmpty,
   validateNumber,
-} from './src/util/validation.js';
-import { add } from './src/math.js';
-import { transformToNumber } from './src/util/numbers.js';
+} from "./src/util/validation.js";
+import { calculateResult } from "./src/math.js";
+import { transformToNumber } from "./src/util/numbers.js";
+import { generateResultText, outputResult } from "./src/output.js";
 
-const form = document.querySelector('form');
-const output = document.getElementById('result');
+const form = document.querySelector("form");
 
 function formSubmitHandler(event) {
   event.preventDefault();
-  const formData = new FormData(form);
-  const numberInputs = extractNumbers(formData);
+  const numberValues = extractEnteredNumberValues(form); // 1
 
-  let result = '';
-  
-  try {
-    const numbers = [];
-    for (const numberInput of numberInputs) {
-      validateStringNotEmpty(numberInput);
-      const number = transformToNumber(numberInput);
-      validateNumber(number);
-      numbers.push(number);
-    }
-    result = add(numbers).toString();
-  } catch (error) {
-    result = error.message;
-  }
+  const result = calculateResult(numberValues); // 4
+  const resultText = generateResultText(result); // 5
 
-  let resultText = '';
-
-  if (result === 'invalid') {
-    resultText = 'Invalid input. You must enter valid numbers.';
-  } else if (result !== 'no-calc') {
-    resultText = 'Result: ' + result;
-  }
-
-  output.textContent = resultText;
+  outputResult(resultText); // 6
 }
 
-form.addEventListener('submit', formSubmitHandler);
+form.addEventListener("submit", formSubmitHandler);
