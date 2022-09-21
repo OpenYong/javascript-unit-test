@@ -39,4 +39,11 @@ describe("cleanNumbers()", () => {
 
     expect(cleanedNumbers[0]).toBeTypeOf("number");
   });
+  it("만약 배열에 적어도 하나의 빈 문자열이 있다면 에러를 발생시킨다.", () => {
+    const numberValues = ["", 1];
+
+    const cleanFn = () => cleanNumbers(numberValues);
+
+    expect(cleanFn).toThrow();
+  });
 });
