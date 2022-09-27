@@ -25,7 +25,7 @@ it("토근 값을 생성해낸다. callback", (done) => {
 it("토근 값을 생성해낸다. Promise", () => {
   const userEmail = "test@test.com";
 
-  expect(generateTokenPromise(userEmail)).resolves.toBeDefined();
+  return expect(generateTokenPromise(userEmail)).resolves.toBeDefined();
 });
 
 it("토근 값을 생성해낸다. async,await ", async () => {
