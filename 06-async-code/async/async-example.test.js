@@ -1,7 +1,7 @@
 import { expect, it } from "vitest";
-import { generateToken } from "./async-example";
+import { generateToken, generateTokenPromise } from "./async-example";
 
-it("토근 값을 생성해낸다.", (done) => {
+it("토근 값을 생성해낸다. callback", (done) => {
   const userEmail = "test@test.com";
 
   generateToken(userEmail, (err, token) => {
@@ -20,4 +20,18 @@ it("토근 값을 생성해낸다.", (done) => {
     // 고쳐보자!
     // done();
   });
+});
+
+it("토근 값을 생성해낸다. Promise", () => {
+  const userEmail = "test@test.com";
+
+  expect(generateTokenPromise(userEmail)).resolves.toBeDefined();
+});
+
+it("토근 값을 생성해낸다. async,await ", async () => {
+  const userEmail = "test@test.com";
+
+  const token = await generateTokenPromise(userEmail);
+
+  expect(token).toBeDefined();
 });
