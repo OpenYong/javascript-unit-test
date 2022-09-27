@@ -1,9 +1,26 @@
-import { it, expect } from "vitest";
+import { it, expect, beforeEach, beforeAll, afterEach, afterAll } from "vitest";
 
 import { User } from "./hooks";
 
 const testEmail = "test@test.com";
-const user = new User(testEmail);
+let user;
+
+beforeAll(() => {
+  user = new User(testEmail);
+  console.log("beforeAll()");
+});
+beforeEach(() => {
+  user = new User(testEmail);
+  console.log("beforeEach()");
+});
+afterEach(() => {
+  console.log("afterEach()");
+});
+// db저장 같은 테스트를 했다면 여기서 지워주는 코드를 작성한다.
+// clean up !
+afterAll(() => {
+  console.log("afterAll()");
+});
 
 it("should update the email", () => {
   const newTestEmail = "test2@test.com";
