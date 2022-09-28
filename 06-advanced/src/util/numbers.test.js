@@ -32,14 +32,14 @@ describe("transformToNumber()", () => {
 });
 
 describe("cleanNumbers()", () => {
-  it("문자열인 숫자 배열을 전달 받았을때, 숫자 타입의 배열로 반환한다.", () => {
-    const numberValues = ["1", "2"];
+  it("문자열인 숫자가 있는 배열을 전달 받았을때, 숫자 타입의 배열로 반환한다.", () => {
+    const numberValues = ["10", "20", "30"];
 
     const cleanedNumbers = cleanNumbers(numberValues);
 
     // expect(cleanedNumbers[0]).toBeTypeOf("number");
-    // expect(cleanedNumbers).toBe([1, 2]);
-    expect(cleanedNumbers).toEqual([1, 2]);
+    // expect(cleanedNumbers).toBe([10, 20, 30]);
+    expect(cleanedNumbers).toEqual([10, 20, 30]);
   });
 
   it("만약 배열에 적어도 하나의 빈 문자열이 있다면 에러를 발생시킨다.", () => {
