@@ -22,7 +22,7 @@ afterAll(() => {
   console.log("afterAll()");
 });
 
-it("should update the email", () => {
+it.concurrent("should update the email", () => {
   const newTestEmail = "test2@test.com";
 
   user.updateEmail(newTestEmail);
