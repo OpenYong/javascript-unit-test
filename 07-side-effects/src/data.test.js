@@ -7,8 +7,8 @@ describe("generateReportData()", () => {
 
     generateReportData(logger);
 
-    // expect(logger).toBeCalled();
+    expect(logger).toBeCalled();
     // expect(logger).toBeCalledTimes(2);
-    expect(logger).toBeCalledWith();
+    // expect(logger).toBeCalledWith();
   });
 });
