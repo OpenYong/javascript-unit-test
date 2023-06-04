@@ -64,3 +64,14 @@ it("함수에 매개 변수를 넣어주지 않았을 때 에러를 throw 한다
 
   expect(resultFn).toThrow();
 });
+
+it("배열이 아닌 복수의 매개변수가 전달 되었을때 에러 throw 해야한다", () => {
+  const num1 = 1;
+  const num2 = 2;
+
+  const resultFn = () => {
+    add(num1, num2);
+  };
+
+  expect(resultFn).toThrow();
+});
