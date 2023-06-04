@@ -73,5 +73,5 @@ it("배열이 아닌 복수의 매개변수가 전달 되었을때 에러 throw 
     add(num1, num2);
   };
 
-  expect(resultFn).toThrow();
+  expect(resultFn).toThrow(/is not iterable/);
 });
