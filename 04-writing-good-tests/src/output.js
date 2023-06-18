@@ -2,9 +2,9 @@
 export function generateResultText(calculateResult) {
   let resultText = "";
 
-  if (result === "invalid") {
+  if (calculateResult === "invalid") {
     resultText = "Invalid input. You must enter valid numbers.";
-  } else if (result !== "no-calc") {
+  } else if (calculateResult !== "no-calc") {
     resultText = "Result: " + calculateResult;
   }
 
