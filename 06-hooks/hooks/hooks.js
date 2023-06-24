@@ -1,13 +1,14 @@
 export class User {
-  constructor(email) {
-    this.email = email;
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
   }
 
-  updateEmail(newEmail) {
-    this.email = newEmail;
+  updateName(newName) {
+    this.name = newName;
   }
 
-  clearEmail() {
-    this.email = '';
+  deleteAge() {
+    this.age = null;
   }
 }

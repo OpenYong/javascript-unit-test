@@ -1,51 +1,52 @@
-import { it, expect, beforeEach, beforeAll, afterEach, afterAll } from "vitest";
+import { it, expect } from "vitest";
 
 import { User } from "./hooks";
 
-const testEmail = "test@test.com";
-let user;
+it("이름을 업데이트 한다.", () => {
+  const name = "Lee";
+  const age = 99;
+  const newName = "Yong";
 
-beforeAll(() => {
-  user = new User(testEmail);
-  console.log("beforeAll()");
-});
-beforeEach(() => {
-  user = new User(testEmail);
-  console.log("beforeEach()");
-});
-afterEach(() => {
-  console.log("afterEach()");
-});
-// db저장 같은 테스트를 했다면 여기서 지워주는 코드를 작성한다.
-// clean up !
-afterAll(() => {
-  console.log("afterAll()");
+  const user = new User(name, age);
+  user.updateName(newName);
+
+  expect(user.name).toBe(newName);
 });
 
-it.concurrent("should update the email", () => {
-  const newTestEmail = "test2@test.com";
+it("'name' 프로퍼티를 가져야한다.", () => {
+  const name = "Lee";
+  const age = 99;
 
-  user.updateEmail(newTestEmail);
+  const user = new User(name, age);
 
-  expect(user.email).toBe(newTestEmail);
+  expect(user).toHaveProperty("name");
 });
 
-it("should have an email property", () => {
-  expect(user).toHaveProperty("email");
+it("전달된 name 값을 저장해야한다.", () => {
+  const name = "Lee";
+  const age = 99;
+
+  const user = new User(name, age);
+
+  expect(user.name).toBe(name);
 });
 
-it("should store the provided email value", () => {
-  expect(user.email).toBe(testEmail);
+it("'name' 프로퍼티 값을 지워야한다.", () => {
+  const name = "Lee";
+  const age = 99;
+
+  const user = new User(name, age);
+  user.deleteAge();
+
+  expect(user.name).toBeNull;
 });
 
-it("should clear the email", () => {
-  user.clearEmail();
+it("deleteAge메소드 실행 후에도 'age' 프로퍼티를 가져야한다.", () => {
+  const name = "Lee";
+  const age = 99;
 
-  expect(user.email).toBe("");
-});
+  const user = new User(name, age);
+  user.deleteAge();
 
-it("should still have an email property after clearing the email", () => {
-  user.clearEmail();
-
-  expect(user).toHaveProperty("email");
+  expect(user).toHaveProperty("age");
 });
