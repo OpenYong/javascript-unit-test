@@ -1,4 +1,12 @@
-import { it, expect } from "vitest";
+import {
+  it,
+  describe,
+  expect,
+  beforeEach,
+  beforeAll,
+  afterEach,
+  afterAll,
+} from "vitest";
 
 import { User } from "./hooks";
 
@@ -6,7 +14,23 @@ import { User } from "./hooks";
 // 전역 변수로도 설정이 가능하다.
 const name = "Lee";
 const age = 99;
-const user = new User(name, age);
+let user;
+
+beforeAll(() => {
+  console.log("beforeAll()");
+});
+beforeEach(() => {
+  user = new User(name, age);
+  console.log("beforeEach()");
+});
+afterEach(() => {
+  console.log("afterEach()");
+});
+// db저장 같은 테스트를 했다면 여기서 지워주는 코드를 작성한다.
+// clean up !
+afterAll(() => {
+  console.log("afterAll()");
+});
 
 it("이름을 업데이트 한다.", () => {
   const newName = "Yong";
