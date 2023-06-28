@@ -23,7 +23,7 @@ it("writeFile 메소드를 실행시킨다.", () => {
 
   writeData(testData, testFilename);
 
-  // return expect(writeData(testData, testFilename)).resolves.toBeUndefined();
+  return expect(writeData(testData, testFilename)).resolves.toBeUndefined();
   // expect(fs.writeFile).toBeCalled();
 
   // 파일 path를 모두 적어서 테스팅하는 것은 귀찮은 일.
